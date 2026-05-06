@@ -6,7 +6,8 @@ Requirements:
 - Duplicate webhook delivery must not create duplicate licenses.
 - Missing required metadata must return a clear error and not mutate state.
 - Unsupported event types must be ignored safely.
-- Add or update tests for duplicate delivery, missing metadata, invalid event type, and the happy path.
+- Existing tests cover duplicate delivery, invalid event type, and the happy path. Hidden tests cover additional missing-field cases.
+- Do not edit tests or package scripts; fix the implementation only.
 - Keep the public API unchanged unless the task explicitly requires otherwise.
 
 Final response must include:
