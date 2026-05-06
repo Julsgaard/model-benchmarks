@@ -23,7 +23,7 @@ PROMPT_FILE="cases/$CASE/prompt.md"
   echo "# Working directory"
   echo "$WORKTREE"
   echo
-  echo "You may edit files in the working directory. Run the relevant tests. Finish with a concise summary."
+  echo "You may edit implementation files in the working directory. Do not edit tests, package scripts, or benchmark harness files unless explicitly asked. Run the relevant tests. Finish with a concise summary."
 } > "$OUT_DIR/full-prompt.md"
 
 START=$(date +%s)

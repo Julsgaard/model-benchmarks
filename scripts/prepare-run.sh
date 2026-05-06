@@ -20,6 +20,12 @@ DEST="runs/$RUN_ID/$MODEL_ID/$CASE/worktree"
 mkdir -p "$(dirname "$DEST")"
 rm -rf "$DEST"
 cp -R "$SEED" "$DEST"
+(
+  cd "$DEST"
+  git init -q
+  git add .
+  git commit -q -m "seed $CASE" >/dev/null 2>&1 || true
+)
 
 cat > "runs/$RUN_ID/$MODEL_ID/$CASE/metrics.json" <<JSON
 {
