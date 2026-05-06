@@ -1,0 +1,7 @@
+# Benchmark outputs can get large/noisy. Keep the folder but not generated runs.
+runs/*
+!runs/.gitkeep
+
+# Local temp files
+.DS_Store
+*.log
