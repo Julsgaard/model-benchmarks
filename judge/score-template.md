@@ -1,11 +1,16 @@
 # Model Score
 
+Fixed judge model: `openai-codex/gpt-5.5` via Codex sub-agent.
+
+The canonical score artifact is `judge-score.json` in each run folder. This markdown file is only for human-readable review notes.
+
 ## Metadata
 
 - Benchmark version:
 - Case:
 - Anonymous model id:
-- Judge model:
+- Judge model: `openai-codex/gpt-5.5`
+- Judge runtime: Codex sub-agent
 - Judge date:
 - Runtime:
 - Runtime version:

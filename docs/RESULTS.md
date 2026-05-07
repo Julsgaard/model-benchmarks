@@ -31,12 +31,22 @@ Generated raw run artifacts live locally under `runs/<run-id>/<model-label>/<cas
 - Backend invalid/test-edit run: `runs/2026-05-06-kimi-v0.1.0/kimi-backend/backend-idempotent-webhook/`
 - Backend clean run: `runs/2026-05-06-kimi-v0.1.2/kimi-backend-clean2/backend-idempotent-webhook/`
 
-## Current scoring status
+## Judge scoring
 
-This is still a manual MVP scoreboard, not the final judge-scored leaderboard.
+Fixed judge model: `openai-codex/gpt-5.5` via Codex sub-agent.
+
+Current automated test status is shown immediately. Judge-scored runs should add `judge-score.json` to the run folder using `judge/score-prompt.md` and `judge/config.json`.
+
+Prepare a judge bundle with:
+
+```bash
+scripts/prepare-judge-input.sh runs/<run-id>/<model-label>/<case>
+```
+
+Then run a Codex sub-agent with `openai-codex/gpt-5.5` against the generated `judge-input.md` and write `judge-score.json` back to that run folder.
 
 Next upgrades:
 
 1. Add a tracked `results/` export with compact JSON summaries.
-2. Add a score script that converts tests + rubric into a consistent score.
-3. Pick a fixed judge model for UI/design and non-testable quality scoring.
+2. Automate Codex sub-agent scoring from prepared judge bundles.
+3. Add UI/design and agentic cases to the scored leaderboard.

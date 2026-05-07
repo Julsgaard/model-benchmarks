@@ -1,0 +1,8 @@
+{
+  "judgeModel": "openai-codex/gpt-5.5",
+  "judgeRuntime": "codex-subagent",
+  "judgeTemperature": 0,
+  "rubricVersion": "0.1.0",
+  "scoreSchemaVersion": "0.1.0",
+  "notes": "Fixed judge for benchmark v0.1.x. Changing judge model, rubric, prompt, hidden tests, or schema requires a benchmark version bump."
+}
