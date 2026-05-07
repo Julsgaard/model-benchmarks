@@ -22,12 +22,14 @@ Implemented:
 These are not blockers for a first run, but should be improved before trusting a leaderboard:
 
 - [ ] Add hidden tests for `coding-fix`.
-- [ ] Add hidden tests for `hard-problem`.
+- [x] Add hidden tests for `hard-problem`.
+- [x] Add dashboard HTML preview path for UI scoring.
 - [ ] Add screenshot/reference assets for UI scoring.
 - [ ] Add an automated diff/metrics summarizer.
 - [x] Decide fixed judge model: `openai-codex/gpt-5.5` via Codex sub-agent.
 - [ ] Decide first model list.
-- [ ] Run one smoke benchmark with a cheap cloud model to validate the workflow.
+- [x] Run initial Kimi/GLM smoke benchmarks for coding/backend.
+- [ ] Run UI preview smoke fixture and a real UI model run.
 
 ## What Kristian needs to decide
 
@@ -37,3 +39,19 @@ These are not blockers for a first run, but should be improved before trusting a
 2. **Whether OpenCode can auto-approve edits during benchmark runs**:
    - Manual approval is safer.
    - `OPENCODE_AUTO_APPROVE=1` is faster but should only be used inside benchmark seed repos.
+
+
+## Case usefulness review (2026-05-07)
+
+Current useful cases:
+
+- `coding-fix`: small PrivateTranscribe-shaped bugfix. Good sanity check, but too small to choose a daily driver alone.
+- `backend-idempotent-webhook`: useful backend correctness/idempotency case with hidden missing-field tests. Keep.
+- `backend-rate-limit-auth`: added to test auth, validation, per-user rate limiting, and hidden edge cases. This is closer to NordicFuture/PrivateTranscribe API guard work.
+- `hard-problem`: async race/determinism case. Hidden tests added so sleep/superficial fixes are less likely to pass.
+- `agentic-settings-sync`: added to replace the weak duplicate agentic hotkey case. Tests whether an agent can diagnose a real Electron/settings noise pattern and preserve legitimate updates.
+- `ui-landing-page`: useful only with visual preview/manual rubric; Atlas Dashboard now has a preview route for runs with `worktree/index.html`.
+
+Weak/redundant case:
+
+- `agentic-tool-calling`: currently duplicates `coding-fix` and should not be used for serious leaderboard decisions until replaced or removed. Prefer `agentic-settings-sync`.

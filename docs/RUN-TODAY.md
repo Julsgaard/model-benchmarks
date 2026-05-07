@@ -68,3 +68,17 @@ Then ask a Codex sub-agent using `openai-codex/gpt-5.5` to score the generated `
 - For LM Studio, record tokens/sec from the app/server UI in `metrics.json`.
 - For llama.cpp, record prompt eval/generation tok/s from server/CLI logs.
 - If a prompt, seed repo, hidden test, judge prompt, judge rubric, or judge model changes, bump benchmark version.
+
+
+## Recommended v0.1.0 case set before testing more models
+
+Use these for model comparisons:
+
+1. `coding-fix` — quick sanity check for small bugfixes.
+2. `backend-idempotent-webhook` — idempotency + validation with hidden tests.
+3. `backend-rate-limit-auth` — API auth/rate-limit guardrails with hidden tests.
+4. `hard-problem` — async race/determinism, now with hidden tests.
+5. `agentic-settings-sync` — agentic debugging/tool discipline on a PrivateTranscribe-like settings bug.
+6. `ui-landing-page` — visual/design benchmark; inspect rendered preview in Atlas Dashboard.
+
+Avoid using `agentic-tool-calling` for serious scoring for now; it duplicates `coding-fix`.
